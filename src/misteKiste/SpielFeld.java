@@ -85,11 +85,29 @@ public class SpielFeld {
 		dreiGleiche = dreiGleiche(wuerfelBehalten);
 		if(einsOderFuenf || dreiGleiche){
 			
+			//ab hier übernimmt die Runde
+			
 		}
 	}
 
 	private boolean dreiGleiche(List<Wuerfel> wuerfelBehalten) {
-		// TODO Auto-generated method stub
+		
+		for(int i = 1; i <= 6; i++){
+			zaehleEintraege(i, wuerfelBehalten);
+			if(zaehleEintraege(i, wuerfelBehalten) >= 3){
+				return true;
+			}
+		}
 		return false;
+	}
+	private int zaehleEintraege(int i, List<? extends Wuerfel>wuerfelListe){
+		int zaehler = 0;
+		for(Wuerfel w: wuerfelListe){
+			if(i == w.getWert()){
+				zaehler++;
+			}
+		}
+		return zaehler;
+		
 	}
 }
